@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6lq44gd5h63k"]
+
+[ext_resource type="Script" path="res://Scenes/ghost.gd" id="1_jsve2"]
+
+[sub_resource type="Gradient" id="Gradient_m05lu"]
+offsets = PackedFloat32Array(0, 0.506494, 0.993506, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.0505051, 0.0505051, 0.0505051, 1, 0.772727, 0.772727, 0.772727, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tejod"]
+gradient = SubResource("Gradient_m05lu")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpk7y"]
+size = Vector2(12, 12)
+
+[node name="Ghost" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_jsve2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 1)
+scale = Vector2(0.1875, 0.1875)
+texture = SubResource("GradientTexture2D_tejod")
+
+[node name="Camera2D" type="Camera2D" parent="Sprite2D"]
+zoom = Vector2(4, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_lpk7y")
