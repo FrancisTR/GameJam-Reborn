@@ -1,29 +1,89 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6lq44gd5h63k"]
+[gd_scene load_steps=13 format=3 uid="uid://c6lq44gd5h63k"]
 
 [ext_resource type="Script" path="res://Scenes/ghost.gd" id="1_jsve2"]
+[ext_resource type="Texture2D" uid="uid://c8vmhk42yhudj" path="res://Assets/Ghost.png" id="2_4ub0i"]
 
-[sub_resource type="Gradient" id="Gradient_m05lu"]
-offsets = PackedFloat32Array(0, 0.506494, 0.993506, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.0505051, 0.0505051, 0.0505051, 1, 0.772727, 0.772727, 0.772727, 1, 1, 1, 1, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2masb"]
+atlas = ExtResource("2_4ub0i")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_tejod"]
-gradient = SubResource("Gradient_m05lu")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1heag"]
+atlas = ExtResource("2_4ub0i")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uywtk"]
+atlas = ExtResource("2_4ub0i")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k0la"]
+atlas = ExtResource("2_4ub0i")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55klx"]
+atlas = ExtResource("2_4ub0i")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymje4"]
+atlas = ExtResource("2_4ub0i")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtnc7"]
+atlas = ExtResource("2_4ub0i")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64c7o"]
+atlas = ExtResource("2_4ub0i")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pyjf3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2masb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1heag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uywtk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k0la")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55klx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymje4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtnc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64c7o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpk7y"]
-size = Vector2(12, 12)
+size = Vector2(10, 12)
 
 [node name="Ghost" type="CharacterBody2D"]
 collision_mask = 3
 script = ExtResource("1_jsve2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, 1)
-scale = Vector2(0.1875, 0.1875)
-texture = SubResource("GradientTexture2D_tejod")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.203125, 0.203125)
+sprite_frames = SubResource("SpriteFrames_pyjf3")
+autoplay = "default"
+frame = 7
+frame_progress = 0.743476
 
 [node name="Camera2D" type="Camera2D" parent="Sprite2D"]
 zoom = Vector2(4, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_lpk7y")
