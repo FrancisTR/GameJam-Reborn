@@ -1,7 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://c6lq44gd5h63k"]
+[gd_scene load_steps=17 format=3 uid="uid://c6lq44gd5h63k"]
 
 [ext_resource type="Script" path="res://Scenes/ghost.gd" id="1_jsve2"]
 [ext_resource type="Texture2D" uid="uid://c8vmhk42yhudj" path="res://Assets/Ghost.png" id="2_4ub0i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqvu1"]
+bg_color = Color(0.294118, 0.294118, 0.294118, 0.701961)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xer8j"]
+bg_color = Color(0, 0.929412, 0.988235, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2masb"]
 atlas = ExtResource("2_4ub0i")
@@ -67,12 +78,34 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_3h6gv"]
+colors = PackedColorArray(0, 0.961986, 0.961986, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rvqw0"]
+gradient = SubResource("Gradient_3h6gv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpk7y"]
 size = Vector2(10, 12)
 
 [node name="Ghost" type="CharacterBody2D"]
 collision_mask = 3
 script = ExtResource("1_jsve2")
+
+[node name="HoverBar" type="ProgressBar" parent="."]
+z_index = 20
+texture_filter = 1
+offset_left = -8.0
+offset_top = -11.0
+offset_right = 72.0
+offset_bottom = -1.0
+scale = Vector2(0.2, 0.2)
+theme_override_styles/background = SubResource("StyleBoxFlat_nqvu1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xer8j")
+value = 100.0
+show_percentage = false
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -84,6 +117,15 @@ frame_progress = 0.743476
 
 [node name="Camera2D" type="Camera2D" parent="Sprite2D"]
 zoom = Vector2(4, 4)
+
+[node name="Glow" type="PointLight2D" parent="Sprite2D"]
+texture_filter = 1
+position = Vector2(4.76837e-07, 9.53674e-07)
+scale = Vector2(0.769231, 0.923077)
+color = Color(0.910377, 1, 0.997538, 1)
+energy = 17.1
+shadow_color = Color(0, 0.929412, 0.988235, 1)
+texture = SubResource("GradientTexture2D_rvqw0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_lpk7y")

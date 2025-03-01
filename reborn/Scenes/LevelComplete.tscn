@@ -1,0 +1,129 @@
+[gd_scene load_steps=12 format=3 uid="uid://2magwrj42p6e"]
+
+[ext_resource type="Script" path="res://Scenes/level_complete.gd" id="1_lh2qk"]
+[ext_resource type="Texture2D" uid="uid://b7i7j1q43omqj" path="res://Assets/happy_ghost.png" id="2_lhrfo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o080t"]
+atlas = ExtResource("2_lhrfo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3fhc"]
+atlas = ExtResource("2_lhrfo")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86g2m"]
+atlas = ExtResource("2_lhrfo")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e48j5"]
+atlas = ExtResource("2_lhrfo")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onr43"]
+atlas = ExtResource("2_lhrfo")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7chj"]
+atlas = ExtResource("2_lhrfo")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pcp3"]
+atlas = ExtResource("2_lhrfo")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5wn1"]
+atlas = ExtResource("2_lhrfo")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pgytc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o080t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3fhc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86g2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e48j5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onr43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7chj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pcp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5wn1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="LevelComplete" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lh2qk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.722899, 0.527458, 0.920404, 1)
+
+[node name="Return" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -133.0
+offset_top = -220.0
+offset_right = 134.0
+offset_bottom = -113.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Return"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(576, 296)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_pgytc")
+autoplay = "default"
+frame_progress = 0.790682
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -168.0
+offset_top = 64.0
+offset_right = 168.0
+offset_bottom = 176.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 45
+text = "Level Complete"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="Return" to="." method="_on_return_button_down"]
