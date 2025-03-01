@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://crjsgnxxenq6g"]
+[gd_scene load_steps=5 format=3 uid="uid://crjsgnxxenq6g"]
 
-[ext_resource type="Script" path="res://Scenes/title.gd" id="1_fioxp"]
+[ext_resource type="Script" path="res://Scenes/title.gd" id="1_18isp"]
 
 [sub_resource type="SystemFont" id="SystemFont_bu3qg"]
 font_names = PackedStringArray("Ink Free")
@@ -12,58 +12,52 @@ font_size = 50
 [sub_resource type="SystemFont" id="SystemFont_wv1vb"]
 font_names = PackedStringArray("Ink Free")
 
-[sub_resource type="SystemFont" id="SystemFont_6pqj7"]
-font_names = PackedStringArray("Ink Free")
-
 [node name="Title" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_fioxp")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_18isp")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 2
-offset_left = -63.0
-offset_top = -89.0
-offset_right = 1227.0
-offset_bottom = 736.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.19875, 0.075, 0.3, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-offset_left = 450.0
-offset_right = 758.0
-offset_bottom = 720.0
-
-[node name="Seperator" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer"]
-layout_mode = 2
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -154.0
+offset_top = 116.0
+offset_right = 154.0
+offset_bottom = 179.0
+grow_horizontal = 2
 text = "Ghost Jumper"
 label_settings = SubResource("LabelSettings_7dfda")
 
-[node name="Seperator2" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-
 [node name="Start" type="Button" parent="."]
-layout_mode = 2
-offset_left = 450.0
-offset_top = 356.0
-offset_right = 758.0
-offset_bottom = 408.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = -35.5
+offset_right = 154.0
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = SubResource("SystemFont_wv1vb")
 theme_override_font_sizes/font_size = 50
 text = "Start"
 
-[node name="Exit" type="Button" parent="."]
-layout_mode = 2
-offset_left = 450.0
-offset_top = 412.0
-offset_right = 758.0
-offset_bottom = 464.0
-theme_override_fonts/font = SubResource("SystemFont_6pqj7")
-theme_override_font_sizes/font_size = 50
-text = "Exit
-"
+[connection signal="button_down" from="Start" to="." method="_on_start_button_down"]
